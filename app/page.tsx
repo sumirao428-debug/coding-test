@@ -1,69 +1,52 @@
-import Image from "next/image";
+import Link from 'next/link'
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
-  );
+    <main className="min-h-screen bg-[#0B0B18] flex flex-col items-center justify-center px-5 py-16 relative overflow-hidden">
+      {/* ambient gradient blobs */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute -top-32 -left-32 w-[500px] h-[500px] bg-violet-600/15 rounded-full blur-[120px]" />
+        <div className="absolute -bottom-32 -right-32 w-[400px] h-[400px] bg-emerald-600/10 rounded-full blur-[100px]" />
+      </div>
+
+      {/* floating decorative emojis */}
+      <div className="absolute inset-0 pointer-events-none select-none overflow-hidden">
+        <span className="absolute top-[8%]  left-[6%]  text-5xl opacity-[0.07]">💻</span>
+        <span className="absolute top-[14%] right-[8%] text-4xl opacity-[0.06]">🐛</span>
+        <span className="absolute top-[38%] left-[4%] text-3xl opacity-[0.07]">☕</span>
+        <span className="absolute top-[52%] right-[5%] text-4xl opacity-[0.06]">🔥</span>
+        <span className="absolute bottom-[28%] left-[7%] text-3xl opacity-[0.07]">😮‍💨</span>
+        <span className="absolute bottom-[20%] right-[9%] text-3xl opacity-[0.06]">📊</span>
+        <span className="absolute bottom-[8%]  left-[35%] text-2xl opacity-[0.05]">⚡</span>
+      </div>
+
+      {/* content */}
+      <div className="relative z-10 text-center w-full max-w-[390px] mx-auto">
+        <p className="text-emerald-400 text-[11px] font-semibold tracking-[0.22em] uppercase mb-6">
+          工程師限定 ✦ 心理測驗
+        </p>
+
+        <h1 className="font-black leading-[1.08] mb-5">
+          <span className="block text-white text-4xl sm:text-5xl">上班</span>
+          <span className="block text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-emerald-400 text-5xl sm:text-6xl">
+            Coding
+          </span>
+          <span className="block text-white text-4xl sm:text-5xl">厭世程度測驗</span>
+        </h1>
+
+        <p className="text-slate-400 text-base leading-relaxed mb-10">
+          共 8 題，選完每題自動跳下一題<br />
+          測完立刻知道你的厭世指數
+        </p>
+
+        <Link href="/quiz" className="block">
+          <button className="w-full py-[18px] px-8 bg-gradient-to-r from-violet-500 to-emerald-500 text-white font-bold text-lg rounded-full shadow-[0_8px_32px_rgba(124,58,237,0.35)] hover:shadow-[0_8px_40px_rgba(124,58,237,0.5)] hover:scale-[1.02] active:scale-[0.97] transition-all duration-200">
+            點我開始測驗
+          </button>
+        </Link>
+
+        <p className="text-slate-700 text-xs mt-5">約 2 分鐘完成，結果可截圖分享</p>
+      </div>
+    </main>
+  )
 }
