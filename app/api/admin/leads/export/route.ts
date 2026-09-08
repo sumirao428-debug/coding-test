@@ -32,13 +32,15 @@ export async function GET(req: NextRequest) {
   XLSX.utils.book_append_sheet(wb, ws, '名單')
 
   const buffer: Uint8Array = XLSX.write(wb, { type: 'buffer', bookType: 'xlsx' })
+  const blob = new Blob([buffer], {
+    type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+  })
 
-  const date = new Date().toISOString().slice(0, 10) // YYYY-MM-DD
+  const date = new Date().toISOString().slice(0, 10)
   const filename = `${date}.xlsx`
 
-  return new NextResponse(buffer, {
+  return new NextResponse(blob, {
     headers: {
-      'Content-Type': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
       'Content-Disposition': `attachment; filename="${filename}"`,
     },
   })
